@@ -1,6 +1,6 @@
 ﻿namespace Shoppinglist
 {
-    public enum UnitTypes
+    enum UnitTypes
     {
         cm,
         ft,

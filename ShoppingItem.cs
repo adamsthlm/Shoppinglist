@@ -22,13 +22,13 @@
         public string Description
         {
             get { return _description; }
-            set 
+            set
             {
                 if (!string.IsNullOrEmpty(value))
                 {
                     _description = value;
                 }
-               
+
             }
 
         }
@@ -40,8 +40,13 @@
             get { return _units; }
             set
             {
-               // det gick inte att skriva Enum.isDefined ... ...
-                _units = value;
+
+                if (System.Enum.IsDefined(typeof(UnitTypes), value))
+                {
+                    _units = value;
+                }
+
+
             }
         }
 
@@ -67,7 +72,7 @@
         {
             string textOut = string.Empty;
             textOut = $"{_description,-45} {_amount,6:f2} {_units,-6}";
-            return textOut; 
+            return textOut;
         }
 
 
