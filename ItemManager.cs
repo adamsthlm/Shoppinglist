@@ -1,0 +1,6 @@
+﻿namespace Shoppinglist
+{
+    class ItemManager
+    {
+    }
+}
