@@ -6,7 +6,8 @@ namespace Shoppinglist
     public partial class MainForm : Form
     {
 
-        ItemManager itemManager = new ItemManager();
+        ItemManager 
+            itemManager = new ItemManager();
 
         public MainForm()
         {

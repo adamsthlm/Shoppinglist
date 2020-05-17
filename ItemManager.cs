@@ -31,14 +31,21 @@ namespace Shoppinglist
 		// Check if given index is within index boundary 
 		private bool CheckIndex(int index)
 		{
-			throw new NotImplementedException();
+			bool ok = false;
+			if (index > itemList.Count && index < -1)
+			{
+				ok = true;
+			}
+			return ok;
 		}
 
 
 		// Method for changing Item
 		public bool ChangeItem(ShoppingItem itemIN, int index)
 		{
-			throw new NotImplementedException();
+			itemList.Insert(index, itemIN);
+			itemList.RemoveAt(index + 1);
+			return true;
 		}
 
 		// Method for remove item
@@ -49,6 +56,17 @@ namespace Shoppinglist
 			{
 				itemList.RemoveAt(index);
 			} return ok;
+		}
+
+		public string[] GetItemsInfoStrings()
+		{
+			string[] stringInfoStrings = new string[itemList.Count];
+			int i = 0;
+			foreach (ShoppingItem ItemObject in itemList)
+			{
+				stringInfoStrings[i++] = ItemObject.ToString();
+			}
+			return stringInfoStrings;
 		}
 
 	}
