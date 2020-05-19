@@ -1,4 +1,10 @@
-﻿
+﻿/*
+Denna fil har skapats som en del av kursen [C# I] på Malmö Universitet 2020
+Namn: Carl-Adam Berglund
+e-mail: ak7764@mau.se
+*/
+
+
 using System;
 using System.Collections.Generic;
 namespace Shoppinglist
@@ -67,6 +73,7 @@ namespace Shoppinglist
 				stringInfoStrings[i++] = ItemObject.ToString();
 			}
 			return stringInfoStrings;
+
 		}
 
 	}

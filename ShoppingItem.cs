@@ -1,4 +1,10 @@
-﻿namespace Shoppinglist
+﻿/*
+Denna fil har skapats som en del av kursen [C# I] på Malmö Universitet 2020
+Namn: Carl-Adam Berglund
+e-mail: ak7764@mau.se
+*/
+
+namespace Shoppinglist
 {
     class ShoppingItem
     {
@@ -9,7 +15,7 @@
             get { return _amount; }
             set
             {
-                if (value > 0)
+                if (value >= 0)
                 {
                     _amount = value;
                 }
@@ -66,6 +72,14 @@
             _description = desc;
             _amount = amount;
             _units = unit;
+        }
+
+        // the copy constructor, No Idea what this is all about!
+        public ShoppingItem(ShoppingItem theOther)
+        {
+            _description = theOther._description; // what is this about??
+            _amount = theOther._amount;
+            _units = theOther._units;
         }
 
         public override string ToString()
