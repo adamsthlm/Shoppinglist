@@ -43,6 +43,8 @@ namespace Shoppinglist
             this.DescriptionTXTBox = new System.Windows.Forms.TextBox();
             this.listOfItems = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnChange = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,14 +105,15 @@ namespace Shoppinglist
             // listOfItems
             // 
             this.listOfItems.FormattingEnabled = true;
-            this.listOfItems.Location = new System.Drawing.Point(29, 160);
+            this.listOfItems.Location = new System.Drawing.Point(29, 191);
             this.listOfItems.Name = "listOfItems";
-            this.listOfItems.Size = new System.Drawing.Size(619, 264);
+            this.listOfItems.Size = new System.Drawing.Size(619, 316);
             this.listOfItems.TabIndex = 1;
+            this.listOfItems.SelectedIndexChanged += new System.EventHandler(this.listOfItems_SelectedIndexChanged);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(459, 63);
+            this.btnAdd.Location = new System.Drawing.Point(470, 23);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(129, 42);
             this.btnAdd.TabIndex = 2;
@@ -118,11 +121,31 @@ namespace Shoppinglist
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btnChange
+            // 
+            this.btnChange.Location = new System.Drawing.Point(470, 71);
+            this.btnChange.Name = "btnChange";
+            this.btnChange.Size = new System.Drawing.Size(129, 42);
+            this.btnChange.TabIndex = 3;
+            this.btnChange.Text = "CHANGE";
+            this.btnChange.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(470, 119);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(129, 42);
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 450);
+            this.ClientSize = new System.Drawing.Size(660, 528);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnChange);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.listOfItems);
             this.Controls.Add(this.groupBox1);
@@ -145,6 +168,8 @@ namespace Shoppinglist
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label Amount;
         private System.Windows.Forms.Label Description;
+        private System.Windows.Forms.Button btnChange;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 

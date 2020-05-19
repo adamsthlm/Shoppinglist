@@ -7,6 +7,7 @@ e-mail: ak7764@mau.se
 
 using System;
 using System.Collections.Generic;
+using System.Text;
 namespace Shoppinglist
 	
 {
@@ -14,6 +15,14 @@ namespace Shoppinglist
     {
 		// This is the list where i put the shoppingItems. (itemList)
 		List<ShoppingItem> itemList = new List<ShoppingItem>();
+
+		// Constructing the ItemManager with an intemList 
+		public ItemManager()
+		{
+			// OBS efter att man deklarerat listan måste man SKAPA en lista i 
+			// konstruktorn!
+			itemList = new List<ShoppingItem>();
+		}
 		
 		// inkapslad data är alltid bra! (gissar jag)
 		private int _count;
@@ -34,32 +43,49 @@ namespace Shoppinglist
 			return ok;
 		}
 
+		public ShoppingItem GetItem (int index)
+		{
+			if (!CheckIndex(index))
+			{
+				return null;
+			}
+			else return itemList[index];
+		}
+
 		// Check if given index is within index boundary 
 		private bool CheckIndex(int index)
 		{
 			bool ok = false;
-			if (index > itemList.Count && index < -1)
+			if ((index >= 0) && (index < itemList.Count))
 			{
 				ok = true;
-			}
-			return ok;
+				return ok;
+			} else return false;
 		}
+
 
 
 		// Method for changing Item
 		public bool ChangeItem(ShoppingItem itemIN, int index)
 		{
-			itemList.Insert(index, itemIN);
-			itemList.RemoveAt(index + 1);
-			return true;
+			bool ok = false;
+
+			if (CheckIndex(index))
+			{
+				ok = true;
+				itemList[index] = itemIN;
+				// itemList.Insert(index, itemIN);
+			}
+			return ok;
 		}
 
 		// Method for remove item
 		public bool DeleteItem(int index)
 		{
 			bool ok = false;
-			if (index != -1)
+			if (!CheckIndex(index))
 			{
+				ok = true;
 				itemList.RemoveAt(index);
 			} return ok;
 		}
@@ -70,11 +96,14 @@ namespace Shoppinglist
 			int i = 0;
 			foreach (ShoppingItem ItemObject in itemList)
 			{
-				stringInfoStrings[i++] = ItemObject.ToString();
+				// passing through all the list objects one-by-one until the very end, adding one to i for-each count... Adding, adding.  
+				stringInfoStrings[i] = ItemObject.ToString();
+				i++;
 			}
 			return stringInfoStrings;
 
 		}
+		
 
 	}
 }

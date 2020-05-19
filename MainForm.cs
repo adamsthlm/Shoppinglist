@@ -2,7 +2,7 @@
 Denna fil har skapats som en del av kursen [C# I] på Malmö Universitet 2020
 Namn: Carl-Adam Berglund
 e-mail: ak7764@mau.se
-*/  
+*/
 
 using System;
 using System.Windows.Forms;
@@ -37,13 +37,12 @@ namespace Shoppinglist
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            bool success = false;
 
             // Read data for the new item
             // if error ReadInput provides messages to the user
             // item is created in the ReadInput
-
-            ShoppingItem item ReadInput (out success);
+            // took me 4 days to find i had missed the '=' sign! whaaaaw!
+            ShoppingItem item = ReadInput(out bool success);
 
             if (success)
             {
@@ -54,7 +53,9 @@ namespace Shoppinglist
 
         private void UpdateGUI()
         {
-            throw new NotImplementedException();
+            listOfItems.Items.Clear();
+            listOfItems.Items.AddRange(itemManager.GetItemsInfoStrings());
+
         }
 
         private ShoppingItem ReadInput(out bool success)
@@ -79,23 +80,31 @@ namespace Shoppinglist
 
             // Read Unit
             item.Units = ReadUnit(out success);
-            
+
             return item;
 
         }
 
         private UnitTypes ReadUnit(out bool success)
         {
-            // Not developed yet.
-            throw new NotImplementedException();
+            success = false;
+            UnitTypes unit = UnitTypes.lb;
+            if (cmbUnit.SelectedIndex >= 0)
+            {
+                success = true;
+                unit = (UnitTypes)cmbUnit.SelectedIndex;
+            }
+            else
+                GiveMessage("Wrong unit");
+            return unit;
+
         }
 
         private double ReadAmount(out bool success)
         {
-            double amount = 0.0;
             success = false;
 
-            if (!double.TryParse(AmountTXTBox.Text, out amount))
+            if (!double.TryParse(AmountTXTBox.Text, out double amount))
             {
                 GiveMessage("Wrong amount!");
                 AmountTXTBox.Focus();
@@ -115,15 +124,30 @@ namespace Shoppinglist
 
         private string ReadDescription(out bool success)
         {
-            
-            string description;
+
+            string text = DescriptionTXTBox.Text.Trim();
             success = false;
+            if (!string.IsNullOrEmpty(text))
+            {
+                success = true;
+            }
+            else
+                GiveMessage("Enter a description");
+            return text;
+            
+        }
 
-            DescriptionTXTBox.Focus();
-            description = DescriptionTXTBox.Text;
+        private void listOfItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listOfItems.SelectedIndex > 0)
+            {
+                return;
+            }
 
-            success = true;
-            return description;
+            ShoppingItem item = itemManager.GetItem(listOfItems.SelectedIndex);
+            AmountTXTBox.Text = item.ToString();
+            DescriptionTXTBox.Text = item.Description;
+            cmbUnit.SelectedIndex = (int)item.Units;
         }
     }
 }
