@@ -139,15 +139,18 @@ namespace Shoppinglist
 
         private void listOfItems_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listOfItems.SelectedIndex > 0)
-            {
+            if (listOfItems.SelectedIndex < 0)
                 return;
-            }
 
             ShoppingItem item = itemManager.GetItem(listOfItems.SelectedIndex);
-            AmountTXTBox.Text = item.ToString();
+            AmountTXTBox.Text = item.Amount.ToString();
             DescriptionTXTBox.Text = item.Description;
             cmbUnit.SelectedIndex = (int)item.Units;
+        }
+
+        private void cmbUnit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

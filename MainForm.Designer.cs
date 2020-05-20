@@ -87,6 +87,7 @@ namespace Shoppinglist
             this.cmbUnit.Name = "cmbUnit";
             this.cmbUnit.Size = new System.Drawing.Size(121, 21);
             this.cmbUnit.TabIndex = 2;
+            this.cmbUnit.SelectedIndexChanged += new System.EventHandler(this.cmbUnit_SelectedIndexChanged);
             // 
             // AmountTXTBox
             // 
