@@ -130,6 +130,7 @@ namespace Shoppinglist
             this.btnChange.TabIndex = 3;
             this.btnChange.Text = "CHANGE";
             this.btnChange.UseVisualStyleBackColor = true;
+            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
             // btnDelete
             // 
@@ -139,6 +140,7 @@ namespace Shoppinglist
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // MainForm
             // 

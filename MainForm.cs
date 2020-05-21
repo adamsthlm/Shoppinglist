@@ -152,5 +152,22 @@ namespace Shoppinglist
         {
 
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+              
+            // Senaste raden jag skrev
+            listOfItems.Items.RemoveAt(listOfItems.SelectedIndex);
+
+           
+           // ***********************************************************
+           
+        }
+
+        private void btnChange_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
