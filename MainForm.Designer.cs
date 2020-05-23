@@ -87,7 +87,7 @@ namespace Shoppinglist
             this.cmbUnit.Name = "cmbUnit";
             this.cmbUnit.Size = new System.Drawing.Size(121, 21);
             this.cmbUnit.TabIndex = 2;
-            this.cmbUnit.SelectedIndexChanged += new System.EventHandler(this.cmbUnit_SelectedIndexChanged);
+            this.cmbUnit.SelectedIndexChanged += new System.EventHandler(this.CmbUnit_SelectedIndexChanged);
             // 
             // AmountTXTBox
             // 
@@ -110,7 +110,7 @@ namespace Shoppinglist
             this.listOfItems.Name = "listOfItems";
             this.listOfItems.Size = new System.Drawing.Size(619, 316);
             this.listOfItems.TabIndex = 1;
-            this.listOfItems.SelectedIndexChanged += new System.EventHandler(this.listOfItems_SelectedIndexChanged);
+            this.listOfItems.SelectedIndexChanged += new System.EventHandler(this.ListOfItems_SelectedIndexChanged);
             // 
             // btnAdd
             // 
@@ -120,7 +120,7 @@ namespace Shoppinglist
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // btnChange
             // 
@@ -130,7 +130,7 @@ namespace Shoppinglist
             this.btnChange.TabIndex = 3;
             this.btnChange.Text = "CHANGE";
             this.btnChange.UseVisualStyleBackColor = true;
-            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
+           // this.btnChange.Click += new System.EventHandler(this.BtnChange_Click);
             // 
             // btnDelete
             // 
@@ -140,7 +140,7 @@ namespace Shoppinglist
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+          //  this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // MainForm
             // 

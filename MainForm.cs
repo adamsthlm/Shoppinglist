@@ -11,8 +11,7 @@ namespace Shoppinglist
 {
     public partial class MainForm : Form
     {
-
-        ItemManager itemManager = new ItemManager();
+        readonly ItemManager itemManager = new ItemManager();
 
         public MainForm()
         {
@@ -35,7 +34,7 @@ namespace Shoppinglist
 
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
 
             // Read data for the new item
@@ -55,17 +54,17 @@ namespace Shoppinglist
         {
             listOfItems.Items.Clear();
             listOfItems.Items.AddRange(itemManager.GetItemsInfoStrings());
-
         }
 
         private ShoppingItem ReadInput(out bool success)
         {
-            success = false;
+          
+            ShoppingItem item = new ShoppingItem
+            {
 
-            ShoppingItem item = new ShoppingItem();
-
-            // Read description
-            item.Description = ReadDescription(out success);
+                // Read description
+                Description = ReadDescription(out success)
+            };
             if (!success)
             {
                 return null;
@@ -134,10 +133,10 @@ namespace Shoppinglist
             else
                 GiveMessage("Enter a description");
             return text;
-            
+
         }
 
-        private void listOfItems_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListOfItems_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listOfItems.SelectedIndex < 0)
                 return;
@@ -148,26 +147,34 @@ namespace Shoppinglist
             cmbUnit.SelectedIndex = (int)item.Units;
         }
 
-        private void cmbUnit_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbUnit_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
+            if (listOfItems.SelectedIndex < 0 )
+            {
+                MessageBox.Show("Please select an item");
+                return;
+            } else
+            {
+                int index = listOfItems.SelectedIndex;
+                itemManager.DeleteItem(index);
+                listOfItems.Items.Clear();
 
-              
-            // Senaste raden jag skrev
-            listOfItems.Items.RemoveAt(listOfItems.SelectedIndex);
+                for (int i = 0; i < itemManager.Count; i++)
+                {
+                    listOfItems.Items.Add(itemManager.GetItem(i));
+                }
+                
+                UpdateGUI();
+            }
 
-           
-           // ***********************************************************
-           
         }
+   
+    } // end main
+} // end namespace
 
-        private void btnChange_Click(object sender, EventArgs e)
-        {
 
-        }
-    }
-}

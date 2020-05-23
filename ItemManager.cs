@@ -14,7 +14,7 @@ namespace Shoppinglist
     class ItemManager
     {
 		// This is the list where i put the shoppingItems. (itemList)
-		List<ShoppingItem> itemList = new List<ShoppingItem>();
+		public List<ShoppingItem> itemList = new List<ShoppingItem>();
 
 		// Constructing the ItemManager with an intemList 
 		public ItemManager()
@@ -55,11 +55,10 @@ namespace Shoppinglist
 		// Check if given index is within index boundary 
 		private bool CheckIndex(int index)
 		{
-			bool ok = false;
+			
 			if ((index >= 0) && (index < itemList.Count))
 			{
-				ok = true;
-				return ok;
+				return true;
 			} else return false;
 		}
 
@@ -83,7 +82,7 @@ namespace Shoppinglist
 		public bool DeleteItem(int index)
 		{
 			bool ok = false;
-			if (!CheckIndex(index))
+			if (CheckIndex(index))
 			{
 				ok = true;
 				itemList.RemoveAt(index);
