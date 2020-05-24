@@ -58,7 +58,7 @@ namespace Shoppinglist
 
         private ShoppingItem ReadInput(out bool success)
         {
-          
+
             ShoppingItem item = new ShoppingItem
             {
 
@@ -154,26 +154,30 @@ namespace Shoppinglist
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (listOfItems.SelectedIndex < 0 )
+
+            int index = listOfItems.SelectedIndex;
+            if (index < 0)
             {
                 MessageBox.Show("Please select an item");
                 return;
-            } else
+            }
+            else
             {
-                int index = listOfItems.SelectedIndex;
                 itemManager.DeleteItem(index);
                 listOfItems.Items.Clear();
+               
 
-                for (int i = 0; i < itemManager.Count; i++)
+                foreach (ShoppingItem index2 in itemManager.itemList)
                 {
-                    listOfItems.Items.Add(itemManager.GetItem(i));
+                    listOfItems.Items.Add(index2);
                 }
-                
-                UpdateGUI();
             }
 
+            UpdateGUI();
+
+
         }
-   
+
     } // end main
 } // end namespace
 

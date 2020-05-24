@@ -84,8 +84,7 @@ namespace Shoppinglist
 
         public override string ToString()
         {
-            string textOut = string.Empty;
-            textOut = $"{_description,-45} {_amount,6:f2} {_units,-6}";
+            string textOut = $"{_description,-45} {_amount,6:f2} {_units,-6}";
             return textOut;
         }
 
